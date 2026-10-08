@@ -3,7 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://wardogstats.app/gold"
+URL = "https://wardogstats.app/gold?refresh=1"
 WEBHOOK = os.environ["DISCORD_WEBHOOK"]
 
 html = requests.get(URL, timeout=20).text
