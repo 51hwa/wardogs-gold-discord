@@ -10,10 +10,14 @@ html = requests.get(URL, timeout=20).text
 soup = BeautifulSoup(html, "html.parser")
 text = soup.get_text(" ", strip=True)
 
-match = re.search(r"1 gold bar.*?\$(\d[\d,]+)", text, re.I)
+match = re.search(
+    r"1 gold bar on [^$]*\$(\d[\d,]+)",
+    text,
+    re.I
+)
 
 if not match:
-    raise RuntimeError("금값을 찾지 못했습니다.")
+    raise RuntimeError("최신 금값을 찾지 못했습니다.")
 
 price = match.group(1)
 
